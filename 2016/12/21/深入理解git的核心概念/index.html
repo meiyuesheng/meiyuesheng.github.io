@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="Sm8BDulH9iFOISW4aGrlJ0yjqgd5Wd-zn8PpPKe-C8I" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="深入理解git的核心概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解git的核心概念">
+<meta property="og:url" content="http://yoursite.com/2016/12/21/深入理解git的核心概念/index.html">
+<meta property="og:site_name" content="月生的博客">
+<meta property="og:description" content="深入理解git的核心概念">
+<meta property="og:updated_time" content="2016-12-21T08:15:09.860Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解git的核心概念">
+<meta name="twitter:description" content="深入理解git的核心概念">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/21/深入理解git的核心概念/"/>
+
+
+
+
+
+  <title> 深入理解git的核心概念 | 月生的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/meiyuesheng"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">月生的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">编程,思考</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/深入理解git的核心概念/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Mei YueSheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="月生的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="月生的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入理解git的核心概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T09:41:16+08:00">
+                2016-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/other/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/21/深入理解git的核心概念/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/深入理解git的核心概念/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  深入理解git的核心概念
+              </div>
+          
+
+          
+            <span>&nbsp; | &nbsp;
+            <span id="busuanzi_value_page_pv" ></span>次阅读
+            </span>    
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="重要概念的理解"><a href="#重要概念的理解" class="headerlink" title="重要概念的理解"></a>重要概念的理解</h2><h3 id="git概述"><a href="#git概述" class="headerlink" title="git概述"></a>git概述</h3><p>git是一个分布式版本管理工具，简单来说，就是记录（主要是）文本文件的变动的信息，也就是记录修改的位置以及修改的具体内容以及其他相关信息。<br>git以repository(仓库）为基本的管理单位。一个仓库可以理解为一个文件夹。git初始化后会对仓库中的文件以及文件夹进行管理。</p>
+<h3 id="从git的使用中理解背后的原理："><a href="#从git的使用中理解背后的原理：" class="headerlink" title="从git的使用中理解背后的原理："></a>从git的使用中理解背后的原理：</h3><h4 id="仓库中文件的状态"><a href="#仓库中文件的状态" class="headerlink" title="仓库中文件的状态"></a>仓库中文件的状态</h4><ul>
+<li>初始化后,在git的仓库中，文件/目录分为tracked/untracked两个状态，创建文件后通过把新文件add入工作区才能对新文件进行版本跟踪。</li>
+<li>对于已被跟踪的文件，又可以分为unmodified(未修改）modified（修改）staged(暂存）状态。</li>
+</ul>
+<p>与之相关的是git把一个仓库划分为三个区域：</p>
+<ul>
+<li>工作区域：可以理解为我们能看到的目录和文件所在的区域。</li>
+<li>暂存区：用add命令后，git会把添加的文件做一个快照放入暂存区</li>
+<li>版本库：用commit提交后，新生成的版本就放入版本库。<br>文件被提交后就会回到unmodified状态，当对工作区的文件进行修改后文件就变成了modified状态，add文件到暂存区后就变为暂存状态。</li>
+</ul>
+<h4 id="暂存（add-和提交（commit"><a href="#暂存（add-和提交（commit" class="headerlink" title="暂存（add)和提交（commit)"></a>暂存（add)和提交（commit)</h4><p>每一次把新的修改add到工作目录时，git就会对文件进行校验，通过SHA-1算法，生成一个40位的16进制的hash值，这个hash值就做为每一份文件的ID，也是git中常说的指针。</p>
+<p>git通过snapshot(快照）的方式来保存每一次新修改的文件。快照就是对文件的一次复制。与其他版本管理工具只记录文件的变动信息不同，git记录的是每份修改的文件的副本。不过git会对快照进行压缩，同时在新的提交中通过引用来保存没有变动的文件，这样就减小了使用快照带来的副作用。</p>
+<p>每做一次提交（commit)，git就会做一系列工作来生成一个版本。具体来说：对每一次提交，git会生成三种类型的对象。</p>
+<ul>
+<li>blob对象用来存储文件的内容。</li>
+<li>tree对象用来存储文件目录中的信息，比如当前仓库中的文件以及子目录，tree对象中可以包含子tree对象。</li>
+<li>commit对象：包含了当前提交的相关信息，比如提交时间、作者、注释等。以及这次提交生成的顶层的tree对象。也就是commit对象会存储一个tree对象的引用。还会包含一个指向上一次提交对象的指针。<br>每一个对象都拥有独一无二的校验和，git中称为对象的指针。可以看做是对象的唯一的ID。版本回退时利用的就是这个指针。</li>
+</ul>
+<p>对象之间关系：commit对象指向tree对象，tree对象指向blob对象或者子tree,就这样形成了一个版本。<br>除了第一次提交的commit对象，每一个commit对象还有一个指向上一次commit对象的指针。这样就形成了一条由commit对象组成的链条。可以通过每一个个commit对象的指针在不同版本件切换。</p>
+<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><p>每个版本库从创建时就会有一条默认分支，可以想象成是由commit对象组成的一条链条。如果不对git进行特别的操作（分支操作），仓库中永远就只会 只有一条分支（master)，我们可以手动创建自己的分支，这样链条就会分叉，在不同的分支上可以独立提交（commit)。</p>
+<p>分支的概念和平行时空的概念很像，在某一个时间点（commit版本),历史出现了分叉，产生了一个平行世界。在时间点之前两个世界的历史（版本）完全一样，之后就可以有自己独有的历史（版本）。</p>
+<p>分支的本质是一个指向最新commit对象的指针。也就是说分支是通过指针来实现的，创建一个分支就是创建一个新的指针。<code>git branch branchname</code>创建新的分支。</p>
+<p>git通过HEAD指针来管理分支。HEAD指向当前分支的最新提交对象。用来标识当前所在的分支的。当切换分支时，HEAD也会随着切换，<strong>工作区的内容</strong>也会随之切换，会变成当前分支的最新提交对象所指向的文件内容。</p>
+<p>分支之间可以合并（merge),如果合并的分支间只是简单的上下游关系，git所要做的只是简单的移动指针而已。若分支之间出现冲突，既都对相同的位置都做了修改，就需要手动解决冲突。具体来说git会相关文件中把两份修改都列出来，让我们自己删除一份。然后再提交，就会真正合并。这种合并会生成一个新的commit对象，两个分支都会重新指向这个commit对象。</p>
+<h4 id="分支与远程管理"><a href="#分支与远程管理" class="headerlink" title="分支与远程管理"></a>分支与远程管理</h4><p>git是一个分布式的版本管理工具，每一个仓库都可以被clone到不同的主机上。但其实对不同的主机来说，其他主机上的仓库只是一个分支而已。不同主机间的同步工作如push和pull,其实是在合并不同的分支。</p>
+<p>有两种方式让不同服务器上的仓库产生联系。</p>
+<ul>
+<li>一是从另外一个那里直接克隆一个仓库git clone ‘url’:克隆远程仓库。这样就会获得仓库中的全部数据。。默认远程仓库名origin。默认在本地创建 跟踪分支 origin/master。</li>
+<li>二是在本地仓库中 添加远程仓库，添加之后简单来看只是保存了远程仓库的地址的简写并让shortname与远程仓库的地址相对应。<br>（克隆或添加）连接仓库之后，本地仓库就会获得远程仓库的分支，用 远程仓库名/分支名的形式表示。但在本地仓库中不能切换到远程仓库的分支，这些远程分支的引用（指针）可以在创建分支时或同步数据时使用。</li>
+</ul>
+<p>本地仓库与远程仓库的同步通过pull/fetch或者push命令来实现。</p>
+<ul>
+<li>fetch命令可以把远程仓库的数据全部拉到本地仓库中。拉取数据之后，本地仓库中的远程分支 remote/branch 就会根据远程的数据进行更新，既指向新的提交对象（如果有）。但新的数据不会和本地同名分支进行合并。而是和本地对应的远程分支 remote/branch进行合并。这个 远程分支其实就是远程仓库在本地的一个拷贝。</li>
+<li>push命令可以把本地分支的更新推送给远程分支，如果没有冲突，会自动合并数据到指定的远程分支。</li>
+</ul>
+<h3 id="其他相关概念"><a href="#其他相关概念" class="headerlink" title="其他相关概念"></a>其他相关概念</h3><p>校验和：通过SHA-1算法 生成的一个40位16进制的hash值<br>相同的输入一定会有相同的输出。<br>可以用来校验是否同一个文件，文件的完整性。<br>文件通过 键值对 来保存和引用，来区分。<br>校验和就做为一个文件的id,也看做指针。</p>
+<p>远程分支命名方式：remote/master （远程仓库名/分支名）<br>如：origin/master</p>
+<p>git push 可以把 本地分支推送到远程。<br>git push -u origin master:<br>-u参数把 本地 master 和远程 master关联。<br>把master分支的更新 推送到 origin远程仓库。<br>push [远程仓库名] [本地分支]：[远程分支]</p>
+<p>clone时，本地仓库<br>会获得 远程跟踪分支 形式为 如：origin/master origin/dev<br>会创建一个本地分支 master,指向远程的 origin/master<br>会自动 将其 添加为远程仓库，默认远程为 origin。<br>会自动设定一个 跟踪分支。会让 本地master 自动跟踪 远程master.</p>
+<p>git fetch [远程仓库名] 拉取远程仓库中有但本地没有的信息。（所有的）<br>不会自动合并。<br>会 获得远程 分支的引用。</p>
+<p>跟踪分支：是指本地分支和远程分支的一种对应关系。<br>如从远程分支里面 checkout出来的分支，或者clone时默认创建的master分支，与远程分支有直接联系。具体来说在本地分支里 git push 和 git pull 都会自动去 相应的远程分支执行任务。<br>相应数据会直接合并。</p>
+<p>分支合并：<br>在master 用 git merge [];<br>以共同祖先为基础 进行三方合并，最后创建一个新的提交对象。<br>冲突：两个分支对同一个地方做了修改，需要手动解决，然后再add</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/21/深入理解git的核心概念/"
+           data-title="深入理解git的核心概念" data-url="http://yoursite.com/2016/12/21/深入理解git的核心概念/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Mei YueSheng" />
+          <p class="site-author-name" itemprop="name">Mei YueSheng</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiyuesheng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重要概念的理解"><span class="nav-number">1.</span> <span class="nav-text">重要概念的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git概述"><span class="nav-number">1.1.</span> <span class="nav-text">git概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从git的使用中理解背后的原理："><span class="nav-number">1.2.</span> <span class="nav-text">从git的使用中理解背后的原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库中文件的状态"><span class="nav-number">1.2.1.</span> <span class="nav-text">仓库中文件的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存（add-和提交（commit"><span class="nav-number">1.2.2.</span> <span class="nav-text">暂存（add)和提交（commit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支操作"><span class="nav-number">1.2.3.</span> <span class="nav-text">分支操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支与远程管理"><span class="nav-number">1.2.4.</span> <span class="nav-text">分支与远程管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关概念"><span class="nav-number">1.3.</span> <span class="nav-text">其他相关概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mei YueSheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yueshengblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
