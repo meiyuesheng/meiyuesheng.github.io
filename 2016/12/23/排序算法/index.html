@@ -1,0 +1,775 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="Sm8BDulH9iFOISW4aGrlJ0yjqgd5Wd-zn8PpPKe-C8I" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="排序算法的复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/排序算法/index.html">
+<meta property="og:site_name" content="月生的博客">
+<meta property="og:description" content="排序算法的复习">
+<meta property="og:updated_time" content="2016-12-23T12:12:17.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="排序算法的复习">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/23/排序算法/"/>
+
+
+
+
+
+  <title> 排序算法 | 月生的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/meiyuesheng"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">月生的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">编程,思考</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/排序算法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Mei YueSheng">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="月生的博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="月生的博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                排序算法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-23T19:57:22+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构与算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/23/排序算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/排序算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+              <div class="post-description">
+                  排序算法的复习
+              </div>
+          
+
+          
+            <span>&nbsp; | &nbsp;
+            <span id="busuanzi_value_page_pv" ></span>次阅读
+            </span>    
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="排序算法（JavaScript实现）"><a href="#排序算法（JavaScript实现）" class="headerlink" title="排序算法（JavaScript实现）"></a>排序算法（JavaScript实现）</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
+<li>方法：每一趟将带排序序列中的一个记录插入到已经排好的序列中。</li>
+<li>性质：<ul>
+<li>如果是顺序存储，每一次插入都要移动很多元素。 </li>
+</ul>
+</li>
+</ul>
+<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><p>每一趟将序列中的一个记录插入到已经排好的序列中。具体来说如果从小到大排：把当前要排列的数和前面以及排好的比较，如果当前数大于已排好的最后一个，位置变，指针（指向当前要排的）向后移动，如果小于最后一个，就让最后一个向左移动一格，当前数继续比较。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">// 直接插入</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line"></div><div class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</div><div class="line"></div><div class="line">				<span class="keyword">var</span> value = arr[i];</div><div class="line"></div><div class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--)&#123;</div><div class="line">					<span class="keyword">if</span> (value&gt;=arr[j]) &#123;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span>&#123;</div><div class="line">						arr[j+<span class="number">1</span>] = arr[j];</div><div class="line"></div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">						arr[j+<span class="number">1</span>] = value;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> arr;</div><div class="line">		&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="折半插入"><a href="#折半插入" class="headerlink" title="折半插入"></a>折半插入</h4><p>除了查找位置部分，其他部分与插入排序相同，查找部分用 二分查找法。<br>查找只是为了拿到位置，之后还是要把相应的元素往后移动。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binarySort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;arr.length;i++)&#123;</div><div class="line">			<span class="keyword">var</span> value = arr[i];</div><div class="line">			<span class="keyword">if</span> (value&gt;=arr[i<span class="number">-1</span>]) &#123;</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">var</span> head = <span class="number">0</span>,tail = i<span class="number">-1</span>,mid = <span class="built_in">parseInt</span>((head+tail)/<span class="number">2</span>);</div><div class="line">			<span class="keyword">var</span> index= mid;</div><div class="line">				<span class="keyword">while</span>(head&lt;tail)&#123;</div><div class="line">					<span class="keyword">if</span> (arr[mid]===value) &#123;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&lt;value)&#123;</div><div class="line">						head = mid+<span class="number">1</span>;</div><div class="line">						mid = <span class="built_in">parseInt</span>((head+tail)/<span class="number">2</span>);</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span>&#123;</div><div class="line">						tail = mid <span class="number">-1</span>;</div><div class="line">						mid = <span class="built_in">parseInt</span>((head+tail)/<span class="number">2</span>);</div><div class="line">					&#125;</div><div class="line"></div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> k=i<span class="number">-1</span>;k&gt;=mid;k--)&#123;</div><div class="line">						</div><div class="line">						arr[k+<span class="number">1</span>] = arr[k];</div><div class="line"></div><div class="line">				&#125;</div><div class="line">				arr[mid] = value;</div><div class="line">			&#125;</div><div class="line">	</div><div class="line">			</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> arr;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><p> 也就是增量排序。<br> 选取一个增量（一般根据序列的大小来取，或者取一些研究出来的特别序列）按照增量把序列分组，分别对它们进行插入排序。<br> 相对插入排序，变化的只是每次位置变化时的量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 希尔排序/增量排序</span></div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> d = <span class="built_in">parseInt</span>(arr.length/<span class="number">2</span>);</div><div class="line">			<span class="keyword">while</span>(d&gt;=<span class="number">1</span>)&#123;</div><div class="line">				</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i+d&lt;arr.length;i++)&#123;</div><div class="line">					</div><div class="line">					<span class="keyword">for</span>(<span class="keyword">var</span> j=i+d;j&lt;arr.length;j+=d)&#123;</div><div class="line"></div><div class="line">						<span class="keyword">var</span> value = arr[j];</div><div class="line">						<span class="keyword">for</span>(<span class="keyword">var</span> k=j-d;k&gt;=i;k-=d)&#123;</div><div class="line"></div><div class="line">							<span class="keyword">if</span>(value&gt;=arr[k])&#123;</div><div class="line">								<span class="keyword">break</span>;</div><div class="line">							&#125;</div><div class="line">							<span class="keyword">else</span>&#123;</div><div class="line">								arr[k+d] = arr[k];</div><div class="line">							&#125;</div><div class="line">						&#125;</div><div class="line"></div><div class="line">						arr[k+d] = value; </div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			</div><div class="line">				d = <span class="built_in">parseInt</span>(d/<span class="number">2</span>);</div><div class="line">				<span class="built_in">console</span>.log(d);</div><div class="line">			&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">			<span class="keyword">return</span> arr;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><p>两两比较待排序的数字，一旦发现不符合顺序的，就相互交换，直到全部满足要求。</p>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>对<strong>相邻</strong>数字进行两两比较，发现不符合顺序的就交换位置。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubleSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">			<span class="keyword">var</span> index = arr.length;</div><div class="line">			<span class="keyword">var</span> value;</div><div class="line"></div><div class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> j=arr.length<span class="number">-1</span>;j&gt;<span class="number">0</span>;j--)&#123;</div><div class="line">				<span class="keyword">var</span> exchangeTime = <span class="number">0</span>;</div><div class="line">			</div><div class="line">				<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;j;i++)&#123;</div><div class="line"></div><div class="line">					<span class="keyword">if</span> (arr[i]&gt;arr[i+<span class="number">1</span>]) &#123;</div><div class="line">						 value = arr[i+<span class="number">1</span>];</div><div class="line">						 arr[i+<span class="number">1</span>] = arr[i];</div><div class="line">						 arr[i] = value;</div><div class="line">						 exchangeTime++;</div><div class="line"></div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">				<span class="keyword">if</span> (exchangeTime===<span class="number">0</span>) &#123;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">return</span> arr;</div><div class="line">		&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>第一趟</p>
+<ol>
+<li>设置关键字，设置两个指针 low，hight。分别指向上界和下界。</li>
+<li>从high开始，搜索第一个小于 关键字 的记录，交换位置。一直搜索到high等于low或者有一次交换为止。然后进行第3步</li>
+<li>从从low开始，一直向右和关键字比较，若有大于的，就交换，直到high等于low为止</li>
+<li>重复2 和 3 ，直到low等于high。</li>
+<li>第一趟排序后，序列被分为两个子表，分别对子表进行1-4步骤。（利用递归）<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quick</span>(<span class="params">low,high,arr</span>) </span>&#123;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span> (low&gt;=high) &#123;</div><div class="line">				<span class="keyword">return</span>;</div><div class="line">			&#125;</div><div class="line">		<span class="keyword">var</span>  tlow = low</div><div class="line">		<span class="keyword">var</span> thigh = high;</div><div class="line">		<span class="keyword">var</span> key =  tlow;</div><div class="line">		</div><div class="line">		<span class="keyword">while</span>(tlow&lt;thigh)&#123;</div><div class="line"></div><div class="line">				<span class="keyword">while</span>(thigh&gt; tlow)&#123;</div><div class="line">					<span class="keyword">if</span> (arr[thigh]&lt;arr[key]) &#123;</div><div class="line">						<span class="keyword">var</span> value = arr[thigh];</div><div class="line">						arr[thigh] = arr[key];</div><div class="line">						arr[key] = value;</div><div class="line">						key = thigh;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">					thigh--;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">while</span>( tlow&lt;thigh)&#123;</div><div class="line">					<span class="keyword">if</span>(arr[tlow]&gt;arr[key])&#123;</div><div class="line">						value = arr[key];</div><div class="line">						arr[key] = arr[tlow];</div><div class="line">						arr[tlow] = value;</div><div class="line">						key = tlow;</div><div class="line">						 <span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">					 tlow++;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">var</span> mid = tlow;</div><div class="line">		<span class="built_in">console</span>.log(tlow)</div><div class="line">		<span class="built_in">console</span>.log(thigh);</div><div class="line">		<span class="built_in">console</span>.log(mid);</div><div class="line"></div><div class="line">		quick(low,mid<span class="number">-1</span>,arr);</div><div class="line">		quick(mid+<span class="number">1</span>,high,arr);</div><div class="line">		</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><p>从序列中选择最小（最大）的元素，与当前指针所在的位置的元素交换。指针从0开始，每交换一次就移动一次，到序列尾结束。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">simpleSelectionSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</div><div class="line">			<span class="keyword">var</span> index=i,value=arr[i];</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">var</span> j=i;j&lt;arr.length;j++)&#123;</div><div class="line">				<span class="keyword">if</span> (arr[j]&lt;value) &#123;</div><div class="line">					value = arr[j]</div><div class="line">					index = j;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			arr[index] = arr[i];</div><div class="line">			arr[i] = value;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> arr;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><ul>
+<li>原理：利用完全二叉树的顺序存储结构，利用完全二叉树父子节点间的关系，然后生成堆，取得最大或最小值。</li>
+<li>堆序列：是这样一个序列，它的第i个元素K(i)&gt;=K(2i)且k(i)&gt;=K(2i+1),或者小于K(i)&lt;=K(2i)且k(i)&lt;=K(2i+1)<ul>
+<li>因此堆序列的根节点就是当前序列的最大（小）元素。</li>
+</ul>
+</li>
+<li>调整堆：把一个堆元素的顶点改变之后，可以通过调整重新使序列变为堆。筛选法调整堆，从当前根节点的子节点中选出大的那个，与根节点进行比较，如果子节点小于根节点，不用交换，若子大于根，就交换。交换之后，以交换的那个子节点做为新的根节点，继续比较。这样不断重复直到叶子节点。</li>
+<li>堆排序实现方法：先把序列变为一个堆序列，然后把当前最大的元素既根节点和当前序列的最后一个元素交换，序列从后向前减小一个长度，对新的序列进行 <strong>调整堆</strong>。如此循环，直到堆序列长度为1.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 调整堆</span></div><div class="line"><span class="comment">// 参数i为堆序列开始位置</span></div><div class="line"><span class="comment">// 参数e 为堆的结束位置</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">heapAdjust</span>(<span class="params">arr,i,e</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"e"</span>+e);</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> j=i*<span class="number">2</span>;j&lt;e;j*=<span class="number">2</span>)&#123;</div><div class="line">				</div><div class="line">			<span class="keyword">if</span>(arr[j]&lt;arr[j+<span class="number">1</span>])j++;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span> (arr[j]&lt;=arr[i]) &#123;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				<span class="keyword">var</span> value = arr[i];</div><div class="line">				arr[i] =arr[j];</div><div class="line">				arr[j] = value;</div><div class="line">				i = j;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line"><span class="comment">// 把一个数组变为一个堆，length为序列结束位置</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">createHeap</span>(<span class="params">arr,length</span>)</span>&#123;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=(arr.length<span class="number">-1</span>)/<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)&#123;</div><div class="line"></div><div class="line">			heapAdjust(arr,i,length);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="comment">// 堆排序</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">heapSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line"></div><div class="line">			<span class="keyword">var</span> length = arr.length<span class="number">-1</span>;</div><div class="line">			createHeap(arr,length);</div><div class="line">			<span class="keyword">var</span> value;</div><div class="line"></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i=length;i&gt;=<span class="number">1</span>;i--)&#123;</div><div class="line">			value = arr[length];</div><div class="line">			arr[length] = arr[<span class="number">1</span>];</div><div class="line">			arr[<span class="number">1</span>] = value; </div><div class="line">			length--;</div><div class="line"></div><div class="line">			heapAdjust(arr,<span class="number">1</span>,length);</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">    </div><div class="line">    <span class="comment">// 序列用数组表示，第一个元素从下标arr[1]开始</span></div><div class="line">	<span class="keyword">var</span> arr = [<span class="number">0</span>,<span class="number">49</span>,<span class="number">38</span>,<span class="number">65</span>,<span class="number">97</span>,<span class="number">76</span>,<span class="number">13</span>,<span class="number">27</span>,<span class="number">49</span>];</div><div class="line">    heapSort(h2);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其他：<br> for循环语句的执行顺序<br>  for(var sta1;sta2;sta3){<br> 循环体<br> }<br> 执行顺序为 sta1 》sta2》 循环体 》sta3 》sta2》 循环体 》sta3</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/深入理解git的核心概念/" rel="next" title="深入理解git的核心概念">
+                <i class="fa fa-chevron-left"></i> 深入理解git的核心概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/23/React学习笔记/" rel="prev" title="React学习笔记">
+                React学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/23/排序算法/"
+           data-title="排序算法" data-url="http://yoursite.com/2016/12/23/排序算法/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Mei YueSheng" />
+          <p class="site-author-name" itemprop="name">Mei YueSheng</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/meiyuesheng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#排序算法（JavaScript实现）"><span class="nav-number">1.</span> <span class="nav-text">排序算法（JavaScript实现）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">1.1.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接插入排序"><span class="nav-number">1.1.1.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#折半插入"><span class="nav-number">1.1.2.</span> <span class="nav-text">折半插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#希尔排序"><span class="nav-number">1.1.3.</span> <span class="nav-text">希尔排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换排序"><span class="nav-number">1.2.</span> <span class="nav-text">交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序"><span class="nav-number">1.2.2.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">1.3.</span> <span class="nav-text">选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单选择排序"><span class="nav-number">1.3.1.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆排序"><span class="nav-number">1.3.2.</span> <span class="nav-text">堆排序</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mei YueSheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yueshengblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

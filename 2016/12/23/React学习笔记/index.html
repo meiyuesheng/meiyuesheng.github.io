@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="React js框架," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="深入理解git的核心概念">
+<meta name="description" content="React是什么？一个js框架，一个js库。用来构建 UI,构建用户界面， 用户视图，用来创建组件。可以像写html一样在js中 使用组件。搭配react生态可以用来开发 web APP，开发单页应用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解git的核心概念">
-<meta property="og:url" content="http://yoursite.com/2016/12/21/深入理解git的核心概念/index.html">
+<meta property="og:title" content="React学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/React学习笔记/index.html">
 <meta property="og:site_name" content="月生的博客">
-<meta property="og:description" content="深入理解git的核心概念">
-<meta property="og:updated_time" content="2016-12-21T10:49:36.098Z">
+<meta property="og:description" content="React是什么？一个js框架，一个js库。用来构建 UI,构建用户界面， 用户视图，用来创建组件。可以像写html一样在js中 使用组件。搭配react生态可以用来开发 web APP，开发单页应用。">
+<meta property="og:updated_time" content="2016-12-23T12:58:14.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解git的核心概念">
-<meta name="twitter:description" content="深入理解git的核心概念">
+<meta name="twitter:title" content="React学习笔记">
+<meta name="twitter:description" content="React是什么？一个js框架，一个js库。用来构建 UI,构建用户界面， 用户视图，用来创建组件。可以像写html一样在js中 使用组件。搭配react生态可以用来开发 web APP，开发单页应用。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/21/深入理解git的核心概念/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/23/React学习笔记/"/>
 
 
 
 
 
-  <title> 深入理解git的核心概念 | 月生的博客 </title>
+  <title> React学习笔记 | 月生的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/深入理解git的核心概念/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/React学习笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Mei YueSheng">
@@ -284,7 +284,7 @@
             
             
               
-                深入理解git的核心概念
+                React学习笔记
               
             
           </h1>
@@ -297,8 +297,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T09:41:16+08:00">
-                2016-12-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-23T20:56:03+08:00">
+                2016-12-23
               </time>
             
 
@@ -316,8 +316,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/other/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
                   </a>
                 </span>
 
@@ -331,8 +331,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/21/深入理解git的核心概念/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/深入理解git的核心概念/" itemprop="commentCount"></span>
+                <a href="/2016/12/23/React学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/23/React学习笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -345,10 +345,6 @@
 
           
 
-          
-              <div class="post-description">
-                  深入理解git的核心概念
-              </div>
           
 
           
@@ -368,49 +364,63 @@
       
 
       
-        <h2 id="重要概念的理解"><a href="#重要概念的理解" class="headerlink" title="重要概念的理解"></a>重要概念的理解</h2><h3 id="git概述"><a href="#git概述" class="headerlink" title="git概述"></a>git概述</h3><p>git是一个分布式版本管理工具，简单来说，就是记录（主要是）文本文件的变动的信息，也就是记录修改的位置以及修改的具体内容以及其他相关信息。<br>git以repository(仓库）为基本的管理单位。一个仓库可以理解为一个文件夹。git初始化后会对仓库中的文件以及文件夹进行管理。</p>
-<h3 id="从git的使用中理解背后的原理："><a href="#从git的使用中理解背后的原理：" class="headerlink" title="从git的使用中理解背后的原理："></a>从git的使用中理解背后的原理：</h3><h4 id="仓库中文件的状态"><a href="#仓库中文件的状态" class="headerlink" title="仓库中文件的状态"></a>仓库中文件的状态</h4><ul>
-<li>初始化后,在git的仓库中，文件/目录分为tracked/untracked两个状态，创建文件后通过把新文件add入工作区才能对新文件进行版本跟踪。</li>
-<li>对于已被跟踪的文件，又可以分为unmodified(未修改）modified（修改）staged(暂存）状态。</li>
+        <p>React是什么？<br>一个js框架，一个js库。<br>用来构建 UI,构建用户界面， 用户视图，用来创建组件。<br>可以像写html一样在js中 使用组件。<br>搭配react生态可以用来开发 web APP，开发单页应用。</p>
+<a id="more"></a>
+<h3 id="react概述"><a href="#react概述" class="headerlink" title="react概述"></a>react概述</h3><p>React是什么？<br>一个js框架，一个js库。<br>用来构建 UI,构建用户界面， 用户视图，用来创建组件。<br>可以像写html一样在js中 使用组件。<br>搭配react生态可以用来开发 web APP，开发单页应用。</p>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><ul>
+<li>是js 语法扩展。</li>
+<li>让我们可以在js代码中直接使用 HTML标签，实现js和HTML的混写。方便我们更好的创建react组件。</li>
+<li>更准确的说，利用JSX可以直接在JavaScript中像使用HTML一样，创建虚拟的dom元素。</li>
+<li>用法：<ul>
+<li>标签或组件以 <code>&lt;</code>开头，js代码以<code>{</code>开头。</li>
+<li>可以自动展开数组变量中的组件或标签。</li>
+<li>模块只能有一个顶层标签</li>
 </ul>
-<p>与之相关的是git把一个仓库划分为三个区域：</p>
+</li>
+<li>陷阱：<ul>
+<li>对于HTML标签，jsx会丢弃非标准属性。唯有添加data才不会。</li>
+<li>style属性写行内样式时，要用两个花括号。一个表示这里是js语法，解读js语言的一个表示style对象。</li>
+</ul>
+</li>
+</ul>
+<h3 id="React组件"><a href="#React组件" class="headerlink" title="React组件"></a>React组件</h3><p>一个React组件可以看作是用户界面的一部分。可以简单的看作是一个自定义的标签。<br>它是依据代码间的关系抽象出来的一个独立的模块，可以有着自己的独立的数据和行为。实现代码解耦。<br>组件的本质是一个状态机。也就是一个对象，它的状态（数据）随着外界的的影响而改变。<br>在react中一个新的组件就是创建了一个新的组件类，在被当作模板插入时会自动实例化。<br>组件类一定要有render 方法，返回一个模板。</p>
+<h4 id="组件的属性"><a href="#组件的属性" class="headerlink" title="组件的属性"></a>组件的属性</h4><p>组件的属性：可以像html一样添加在组件标签中，组件自己是一个对象（实例化后），组件的属性也就是对象的属性。</p>
 <ul>
-<li>工作区域：可以理解为我们能看到的目录和文件所在的区域。</li>
-<li>暂存区：用add命令后，git会把添加的文件做一个快照放入暂存区</li>
-<li>版本库：用commit提交后，新生成的版本就放入版本库。<br>文件被提交后就会回到unmodified状态，当对工作区的文件进行修改后文件就变成了modified状态，add文件到暂存区后就变为暂存状态。</li>
-</ul>
-<h4 id="暂存（add-和提交（commit"><a href="#暂存（add-和提交（commit" class="headerlink" title="暂存（add)和提交（commit)"></a>暂存（add)和提交（commit)</h4><p>每一次把新的修改add到工作目录时，git就会对文件进行校验，通过SHA-1算法，生成一个40位的16进制的hash值，这个hash值就做为每一份文件的ID，也是git中常说的指针。</p>
-<p>git通过snapshot(快照）的方式来保存每一次新修改的文件。快照就是对文件的一次复制。与其他版本管理工具只记录文件的变动信息不同，git记录的是每份修改的文件的副本。不过git会对快照进行压缩，同时在新的提交中通过引用来保存没有变动的文件，这样就减小了使用快照带来的副作用。</p>
-<p>每做一次提交（commit)，git就会做一系列工作来生成一个版本。具体来说：对每一次提交，git会生成三种类型的对象。</p>
+<li><p>this.props ：是一个参数对象，表示组件的属性。可以组件内部获取。一旦赋值就不可改变。<br>使用时，可以在组件上定义并赋值属性，会自动添加到props对象上，或者在组件内部初始化赋值。</p>
+</li>
+<li><p>this.props.children：表示组件的子节点。子节点的数目决定 它的数据类型。</p>
 <ul>
-<li>blob对象用来存储文件的内容。</li>
-<li>tree对象用来存储文件目录中的信息，比如当前仓库中的文件以及子目录，tree对象中可以包含子tree对象。</li>
-<li>commit对象：包含了当前提交的相关信息，比如提交时间、作者、注释等。以及这次提交生成的顶层的tree对象。也就是commit对象会存储一个tree对象的引用。还会包含一个指向上一次提交对象的指针。<br>每一个对象都拥有独一无二的校验和，git中称为对象的指针。可以看做是对象的唯一的ID。版本回退时利用的就是这个指针。</li>
+<li>组件被当作标签使用时，如果在标签内容区写入内容或者子组件或HTML元素，组件要自己进行处理元素才能显示。就可以通过children获取内容</li>
 </ul>
-<p>对象之间关系：commit对象指向tree对象，tree对象指向blob对象或者子tree,就这样形成了一个版本。<br>除了第一次提交的commit对象，每一个commit对象还有一个指向上一次commit对象的指针。这样就形成了一条由commit对象组成的链条。可以通过每一个个commit对象的指针在不同版本件切换。</p>
-<h4 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h4><p>每个版本库从创建时就会有一条默认分支，可以想象成是由commit对象组成的一条链条。如果不对git进行特别的操作（分支操作），仓库中永远就只会 只有一条分支（master)，我们可以手动创建自己的分支，这样链条就会分叉，在不同的分支上可以独立提交（commit)。</p>
-<p>分支的概念和平行时空的概念很像，在某一个时间点（commit版本),历史出现了分叉，产生了一个平行世界。在时间点之前两个世界的历史（版本）完全一样，之后就可以有自己独有的历史（版本）。</p>
-<p>分支的本质是一个指向最新commit对象的指针。也就是说分支是通过指针来实现的，创建一个分支就是创建一个新的指针。<code>git branch branchname</code>创建新的分支。</p>
-<p>git通过HEAD指针来管理分支。HEAD指向当前分支的最新提交对象。用来标识当前所在的分支的。当切换分支时，HEAD也会随着切换，<strong>工作区的内容</strong>也会随之切换，会变成当前分支的最新提交对象所指向的文件内容。</p>
-<p>分支之间可以合并（merge),如果合并的分支间只是简单的上下游关系，git所要做的只是简单的移动指针而已。若分支之间出现冲突，既都对相同的位置都做了修改，就需要手动解决冲突。具体来说git会相关文件中把两份修改都列出来，让我们自己删除一份。然后再提交，就会真正合并。这种合并会生成一个新的commit对象，两个分支都会重新指向这个commit对象。</p>
-<h4 id="分支与远程管理"><a href="#分支与远程管理" class="headerlink" title="分支与远程管理"></a>分支与远程管理</h4><p>git是一个分布式的版本管理工具，每一个仓库都可以被clone到不同的主机上。但其实对不同的主机来说，其他主机上的仓库只是一个分支而已。不同主机间的同步工作如push和pull,其实是在合并不同的分支。</p>
-<p>有两种方式让不同服务器上的仓库产生联系。</p>
+</li>
+<li><p>protypes：规定属性的格式。指向一个对象。本身是组件实例的一个属性。</p>
+</li>
+<li><p>this.state 属性：组件的可以改变的属性对象，可以用来表示组件的状态，状态改变时会自动调用render重新渲染。改变状态必须调用函数：setState()。直接在this.state上改变不会生效。</p>
 <ul>
-<li>一是从另外一个那里直接克隆一个仓库git clone ‘url’:克隆远程仓库。这样就会获得仓库中的全部数据。。默认远程仓库名origin。默认在本地创建 跟踪分支 origin/master。</li>
-<li>二是在本地仓库中 添加远程仓库，添加之后简单来看只是保存了远程仓库的地址的简写并让shortname与远程仓库的地址相对应。<br>（克隆或添加）连接仓库之后，本地仓库就会获得远程仓库的分支，用 远程仓库名/分支名的形式表示。但在本地仓库中不能切换到远程仓库的分支，这些远程分支的引用（指针）可以在创建分支时或同步数据时使用。</li>
+<li>主要用来动态刷新组件。</li>
 </ul>
-<p>本地仓库与远程仓库的同步通过pull/fetch或者push命令来实现。</p>
-<ul>
-<li>fetch命令可以把远程仓库的数据全部拉到本地仓库中。拉取数据之后，本地仓库中的远程分支 remote/branch 就会根据远程的数据进行更新，既指向新的提交对象（如果有）。但新的数据不会和本地同名分支进行合并。而是和本地对应的远程分支 remote/branch进行合并。这个 远程分支其实就是远程仓库在本地的一个拷贝。</li>
-<li>push命令可以把本地分支的更新推送给远程分支，如果没有冲突，会自动合并数据到指定的远程分支。</li>
+</li>
 </ul>
-<h3 id="其他相关概念"><a href="#其他相关概念" class="headerlink" title="其他相关概念"></a>其他相关概念</h3><p>校验和：通过SHA-1算法 生成的一个40位16进制的hash值<br>相同的输入一定会有相同的输出。<br>可以用来校验是否同一个文件，文件的完整性。<br>文件通过 键值对 来保存和引用，来区分。<br>校验和就做为一个文件的id,也看做指针。</p>
-<p>远程分支命名方式：remote/master （远程仓库名/分支名）<br>如：origin/master</p>
-<p>git push 可以把 本地分支推送到远程。<br>git push -u origin master:<br>-u参数把 本地 master 和远程 master关联。<br>把master分支的更新 推送到 origin远程仓库。<br>push [远程仓库名] [本地分支]：[远程分支]</p>
-<p>clone时，本地仓库<br>会获得 远程跟踪分支 形式为 如：origin/master origin/dev<br>会创建一个本地分支 master,指向远程的 origin/master<br>会自动 将其 添加为远程仓库，默认远程为 origin。<br>会自动设定一个 跟踪分支。会让 本地master 自动跟踪 远程master.</p>
-<p>git fetch [远程仓库名] 拉取远程仓库中有但本地没有的信息。（所有的）<br>不会自动合并。<br>会 获得远程 分支的引用。</p>
-<p>跟踪分支：是指本地分支和远程分支的一种对应关系。<br>如从远程分支里面 checkout出来的分支，或者clone时默认创建的master分支，与远程分支有直接联系。具体来说在本地分支里 git push 和 git pull 都会自动去 相应的远程分支执行任务。<br>相应数据会直接合并。</p>
-<p>分支合并：<br>在master 用 git merge [];<br>以共同祖先为基础 进行三方合并，最后创建一个新的提交对象。<br>冲突：两个分支对同一个地方做了修改，需要手动解决，然后再add</p>
+<h4 id="组件的DOM操作"><a href="#组件的DOM操作" class="headerlink" title="组件的DOM操作"></a>组件的DOM操作</h4><p>在组件中可以获取真实的dom元素。</p>
+<ol>
+<li>使用findDOMNode(this)API,可以获取组件的DOM，也就是组件最顶层的html元素</li>
+<li>或者通过在要引用的元素设定一个 ref属性并赋值，就可以通过组件的this.refs对象访问相应的元素。</li>
+</ol>
+<h4 id="组件的事件"><a href="#组件的事件" class="headerlink" title="组件的事件"></a>组件的事件</h4><p>React组件实现了自己的一套事件机制，使得我们可以直接在组件中正常使用W3C标准的DOM事件，尽管如此，React事件和标准事件还是有不同的地方，使用时要小心。</p>
+<h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h4><ul>
+<li>Mount：插入真实dom</li>
+<li>Updateing：重新渲染</li>
+<li>Unmount：移除真实dom</li>
+<li>每个周期又分为 进行前will，进行后Did 和进行中did，React每个周期都设定了相应的监听器，可以根据不同状态触发事件，会调用相应的函数进行处理。</li>
+</ul>
+<h4 id="组件间的通信："><a href="#组件间的通信：" class="headerlink" title="组件间的通信："></a>组件间的通信：</h4><p>组件与组件间，父子组件间如何传递数据？<br>方法：</p>
+<h5 id="父子组件间通过-props-属性进行通信。"><a href="#父子组件间通过-props-属性进行通信。" class="headerlink" title="父子组件间通过 props 属性进行通信。"></a>父子组件间通过 props 属性进行通信。</h5><ul>
+<li>父组件向子组件传递值：把值绑定到子组件的一个属性上，子组件就可以通过自己的this.props取出来。<br>可以把要传递的值 或者父组件的实例(this) 直接传递给子组件。<br>由于组件是一个对象，所以可以通过对象的引用进行传递，传递后可以对组件进行操作。</li>
+<li>子组件向父组件传递值：<br>把父组件的一个函数通过绑定为子组件的属性传递给子组件，然后子组件可以利用这个 函数句柄（通过传递参数）在函数内部给父组件设置值。注意传递函数时要设置函数的执行环境（this)如：fun.bind(this)。</li>
+</ul>
+<h5 id="通过保存组件的句柄"><a href="#通过保存组件的句柄" class="headerlink" title="通过保存组件的句柄"></a>通过保存组件的句柄</h5><p>把组件对象声明为全局变量,把组件的this值保存到一个全局变量中,然后子组件就可以随意获取。</p>
+<h5 id="对于无嵌套关系的组件"><a href="#对于无嵌套关系的组件" class="headerlink" title="对于无嵌套关系的组件"></a>对于无嵌套关系的组件</h5><p>通过 观察者模式（发布订阅）来实现。<br>通过redux,或者flux等架构。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p><code>...</code>操作符：用来进行属性扩散。</p>
 
       
     </div>
@@ -434,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/React-js框架/" rel="tag"># React js框架</a>
           
         </div>
       
@@ -443,15 +453,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/23/排序算法/" rel="next" title="排序算法">
+                <i class="fa fa-chevron-left"></i> 排序算法
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/23/排序算法/" rel="prev" title="排序算法">
-                排序算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,8 +510,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/21/深入理解git的核心概念/"
-           data-title="深入理解git的核心概念" data-url="http://yoursite.com/2016/12/21/深入理解git的核心概念/">
+      <div class="ds-thread" data-thread-key="2016/12/23/React学习笔记/"
+           data-title="React学习笔记" data-url="http://yoursite.com/2016/12/23/React学习笔记/">
       </div>
     
   </div>
@@ -609,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重要概念的理解"><span class="nav-number">1.</span> <span class="nav-text">重要概念的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git概述"><span class="nav-number">1.1.</span> <span class="nav-text">git概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从git的使用中理解背后的原理："><span class="nav-number">1.2.</span> <span class="nav-text">从git的使用中理解背后的原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仓库中文件的状态"><span class="nav-number">1.2.1.</span> <span class="nav-text">仓库中文件的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存（add-和提交（commit"><span class="nav-number">1.2.2.</span> <span class="nav-text">暂存（add)和提交（commit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支操作"><span class="nav-number">1.2.3.</span> <span class="nav-text">分支操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支与远程管理"><span class="nav-number">1.2.4.</span> <span class="nav-text">分支与远程管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关概念"><span class="nav-number">1.3.</span> <span class="nav-text">其他相关概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#react概述"><span class="nav-number">1.</span> <span class="nav-text">react概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">2.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React组件"><span class="nav-number">3.</span> <span class="nav-text">React组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的属性"><span class="nav-number">3.1.</span> <span class="nav-text">组件的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的DOM操作"><span class="nav-number">3.2.</span> <span class="nav-text">组件的DOM操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的事件"><span class="nav-number">3.3.</span> <span class="nav-text">组件的事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">3.4.</span> <span class="nav-text">组件的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件间的通信："><span class="nav-number">3.5.</span> <span class="nav-text">组件间的通信：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#父子组件间通过-props-属性进行通信。"><span class="nav-number">3.5.1.</span> <span class="nav-text">父子组件间通过 props 属性进行通信。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过保存组件的句柄"><span class="nav-number">3.5.2.</span> <span class="nav-text">通过保存组件的句柄</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于无嵌套关系的组件"><span class="nav-number">3.5.3.</span> <span class="nav-text">对于无嵌套关系的组件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.6.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
             
 
           </div>
